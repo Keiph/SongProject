@@ -23,7 +23,7 @@ public class SongCollection {
     }
 
     public Song getCurrentSong(int currentSongId){
-        return songs [currentSongId] ;
+        return songs[currentSongId] ;
     }
 
     public int searchSongById(String id){
@@ -36,7 +36,23 @@ public class SongCollection {
         return -1;
     }
 
-}
+    public int getNextSong(int currentSongIndex){
+        if (currentSongIndex >= songs.length-1){
+            return currentSongIndex;
+        }
+        else{
+            return currentSongIndex +1;
+        }
+    }
 
+    public int getPrevSong(int currentSongIndex){
+        if (currentSongIndex <= 0){
+            return currentSongIndex;
+        }
+        else{
+            return currentSongIndex-1;
+        }
+    }
+}
 
 

@@ -81,7 +81,28 @@ public class PlaySongActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "The song had ended and the onCompleteListener is activated\nThe button text is changed to 'PLAY'" , Toast.LENGTH_LONG).show();
                 btnPlayPause.setText("PLAY");
             }
-        }) ;
+        });
+    }
+
+    public void playNext(View view) {
+        currentIndex = songCollection.getNextSong(currentIndex);
+        Toast.makeText(this, "After clicking playNext,\nthe current index of this song\nin the SongCollection array is now :" + currentIndex, Toast.LENGTH_LONG).show();
+        Log.d("temasek", "After playNext, the index is now :" + currentIndex);
+        displaySongBasedOnIndex(currentIndex);
+        playSong(fileLink);
+    }
+
+    public void playPrevious(View view) {
+        currentIndex = songCollection.getPrevSong(currentIndex);
+        Toast.makeText(this, "After clicking playPrevious,\nthe current index of this song\nin the SongCollection array is now :" + currentIndex, Toast.LENGTH_LONG).show();
+        Log.d("temasek", "After playPrevious, the index is now :" + currentIndex);
+        displaySongBasedOnIndex(currentIndex);
+        playSong(fileLink);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        player.release();
     }
 }
-
