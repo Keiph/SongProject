@@ -136,8 +136,33 @@
                 app:layout_constraintStart_toEndOf="@+id/S1003"
                 app:layout_constraintTop_toTopOf="@+id/S1003"
                 app:srcCompat="@drawable/wonder_wall" />
+
+            <TextView
+                android:id="@+id/txtTitle4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Wonderwall"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtArtist4"
+                app:layout_constraintStart_toStartOf="@+id/S1004"
+                app:layout_constraintTop_toBottomOf="@+id/S1004" />
+
+            <TextView
+                android:id="@+id/txtArtist4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Wonderwall"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1004" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
+
 
     <TextView
         android:id="@+id/catergoryTxt1"
@@ -151,5 +176,178 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/catergoryTxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Popular"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/catergoryTxt1"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:onClick="handleSelection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/catergoryTxt2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="296dp">
+
+            <ImageButton
+                android:id="@+id/S1005"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="handleSelection"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/something_just_like_this" />
+
+
+            <TextView
+                android:id="@+id/txtTitle5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Something Just Like This"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtArtist5"
+                app:layout_constraintStart_toStartOf="@+id/S1005"
+                app:layout_constraintTop_toBottomOf="@+id/S1005" />
+
+
+            <TextView
+                android:id="@+id/txtArtist5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="The Chainsmokers"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/S1006"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:onClick="handleSelection"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/S1005"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/closer" />
+
+            <TextView
+                android:id="@+id/txtTitle6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Closer"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtArtist6"
+                app:layout_constraintStart_toStartOf="@+id/S1006"
+                app:layout_constraintTop_toBottomOf="@+id/S1006" />
+
+            <TextView
+                android:id="@+id/txtArtist6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="The Chainsmokers"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1006" />
+
+            <ImageButton
+                android:id="@+id/S1007"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:onClick="handleSelection"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/S1006"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/count_on_me" />
+
+            <TextView
+                android:id="@+id/txtTitle7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Count On Me"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtArtist7"
+                app:layout_constraintStart_toStartOf="@+id/S1007"
+                app:layout_constraintTop_toBottomOf="@+id/S1007" />
+
+            <TextView
+                android:id="@+id/txtArtist7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Bruno Mars"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1007" />
+
+            <ImageButton
+                android:id="@+id/S1008"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:onClick="handleSelection"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/S1007"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/rolling_in_the_deep" />
+
+            <TextView
+                android:id="@+id/txtTitle8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Rolling in the Deep"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtArtist8"
+                app:layout_constraintStart_toStartOf="@+id/S1008"
+                app:layout_constraintTop_toBottomOf="@+id/S1008" />
+
+            <TextView
+                android:id="@+id/txtArtist8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Adele"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1008" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

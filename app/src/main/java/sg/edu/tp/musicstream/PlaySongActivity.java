@@ -106,6 +106,7 @@ public class PlaySongActivity extends AppCompatActivity {
             handler.postDelayed(p_bar, 1000);
             player.pause();
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+            setTitle("Now Playing: " + title + " - " + artiste);
             //if song is playing, user press pause, music pause and change to play arrow xml
         } else {
             player.start();
@@ -144,7 +145,11 @@ public class PlaySongActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        handler.removeCallbacks(p_bar);//More robust, solve crashing when prev and song is still playing
-        player.release();
+        if (player != null) {
+            handler.removeCallbacks(p_bar);//More robust, solve crashing when prev and song is still playing
+            player.stop();
+            player.release();
+            player = null;
+        }
     }
 }
