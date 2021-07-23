@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity {
     SongCollection songCollection = new SongCollection();
@@ -28,5 +29,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("temasek", "The index in the array for this song is :" + currentArrayIndex);
         sendDataToActivity(currentArrayIndex);
     }
+
 
 }

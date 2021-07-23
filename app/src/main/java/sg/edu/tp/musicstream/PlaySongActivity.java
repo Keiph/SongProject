@@ -3,14 +3,17 @@ package sg.edu.tp.musicstream;
 import android.media.MediaPlayer;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+
 
 public class PlaySongActivity extends AppCompatActivity {
     private String title = "";
@@ -22,6 +25,8 @@ public class PlaySongActivity extends AppCompatActivity {
     private MediaPlayer player = new MediaPlayer();
     private Button btnPlayPause = null;
     private SongCollection songCollection = new SongCollection();
+    SeekBar seekBar;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,37 @@ public class PlaySongActivity extends AppCompatActivity {
         Log.d("temasek","Retrieved Position is "+currentIndex);
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
+        seekBar = findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if (player !=null && player.isPlaying()) {
+                    player.seekTo(seekBar.getProgress());
+                }
+
+            }
+        });
+
     }
+    Runnable p_bar = new Runnable() {
+        @Override
+        public void run() {
+            if (player !=null && player.isPlaying()) {
+                seekBar.setProgress(player.getCurrentPosition());
+            }
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     public void displaySongBasedOnIndex(int selectedIndex) {
         Song song = songCollection.getCurrentSong(currentIndex);
@@ -56,8 +91,8 @@ public class PlaySongActivity extends AppCompatActivity {
             player.prepare();
             player.start();
             gracefullyStopsWhenMusicEnds();
-
-            btnPlayPause.setText("PAUSE");
+            btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
+            //btnPlayPause.setText("PAUSE");
             setTitle(title);
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,12 +100,17 @@ public class PlaySongActivity extends AppCompatActivity {
     }
 
     public void playOrPauseMusic(View view) {
-        if (player.isPlaying()) { //if player is playing
+        if (player != null && player.isPlaying()) { //if player is playing
+            seekBar.setMax(player.getDuration());
+            handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
+            handler.postDelayed(p_bar, 1000);
             player.pause();
-            btnPlayPause.setText("PLAY");
+            btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+            //if song is playing, user press pause, music pause and change to play arrow xml
         } else {
             player.start();
-            btnPlayPause.setText("PAUSE");
+            btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
+            //btnPlayPause.setText("PAUSE");
         }
     }
 
@@ -79,7 +119,8 @@ public class PlaySongActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 Toast.makeText(getBaseContext(), "The song had ended and the onCompleteListener is activated\nThe button text is changed to 'PLAY'" , Toast.LENGTH_LONG).show();
-                btnPlayPause.setText("PLAY");
+                btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+                //btnPlayPause.setText("PLAY");
             }
         });
     }
@@ -103,6 +144,7 @@ public class PlaySongActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        handler.removeCallbacks(p_bar);//More robust, solve crashing when prev and song is still playing
         player.release();
     }
 }

@@ -11,82 +11,98 @@
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="31dp"
+        android:contentDescription="@string/this_is_for_a_song_image"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157"
         app:srcCompat="@drawable/home" />
 
     <TextView
         android:id="@+id/txtSongTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Song Title"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="149dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/SongTitle"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCoverArt"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_goneMarginEnd="5dp"
+        app:layout_goneMarginStart="5dp" />
 
     <TextView
         android:id="@+id/txtArtist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="Artist"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="189dp"
+        android:text="@string/Artist"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSongTitle"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSongTitle" />
 
     <Button
         android:id="@+id/btnPrevious"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_baseline_skip_previous_24"
         android:onClick="playPrevious"
-        android:text="PREV"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtArtist"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/btnPlayPause" />
 
     <Button
         android:id="@+id/btnPlayPause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_baseline_play_arrow_24"
         android:onClick="playOrPauseMusic"
-        android:text="PLAY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtArtist"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintEnd_toEndOf="@+id/txtArtist"
+        app:layout_constraintStart_toStartOf="@+id/txtArtist" />
 
     <Button
         android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_baseline_skip_next_24"
         android:onClick="playNext"
-        android:text="NEXT"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPlayPause" />
+
+    <Button
+        android:id="@+id/repeatBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_baseline_repeat_off_24"
+        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintEnd_toEndOf="@+id/btnNext" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="350dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtArtist"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txtArtist" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
