@@ -110,7 +110,7 @@
         android:id="@+id/volumeSeekBar"
         android:layout_width="175dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btnPlayPause"
         app:layout_constraintEnd_toStartOf="@+id/repeatBtn"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
@@ -121,7 +121,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/btnPlayPause"
         app:layout_constraintEnd_toStartOf="@+id/volumeSeekBar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/shuffleBtn"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/ic_baseline_volume_up_24" />
+
+    <Button
+        android:id="@+id/shuffleBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ic_baseline_shuffle_off_24"
+        android:onClick="shuffleSong"
+        app:layout_constraintBottom_toTopOf="@+id/btnPrevious"
+        app:layout_constraintStart_toStartOf="@+id/btnPrevious"
+        app:layout_constraintTop_toTopOf="@+id/repeatBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

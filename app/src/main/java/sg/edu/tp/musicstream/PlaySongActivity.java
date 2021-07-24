@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class PlaySongActivity extends AppCompatActivity {
@@ -31,7 +34,12 @@ public class PlaySongActivity extends AppCompatActivity {
     Handler handler = new Handler();
     Button repeatBtn;
     boolean repeatFlag = false; //not a loop when enter in app
-    private SongCollection songCollection = new SongCollection();
+    Button shuffleBtn;
+    boolean shuffleFlag = false;
+    SongCollection songCollection = new SongCollection();
+    SongCollection originalSongCollection = new SongCollection();
+
+    List<Song> shuffleList = Arrays.asList(songCollection.songs);
 
 
     @Override
@@ -90,6 +98,7 @@ public class PlaySongActivity extends AppCompatActivity {
             }
         });
         repeatBtn = findViewById(R.id.repeatBtn);
+        shuffleBtn = findViewById(R.id.shuffleBtn);
 
     }
 
@@ -197,5 +206,16 @@ public class PlaySongActivity extends AppCompatActivity {
             repeatBtn.setBackgroundResource(R.drawable.ic_baseline_repeat_24);
         }
         repeatFlag =!repeatFlag; //if initial repeatFlag is true then false, if false then true
+    }
+    public void shuffleSong(View view) {
+        if (shuffleFlag){
+            shuffleBtn.setBackgroundResource(R.drawable.ic_baseline_shuffle_off_24);
+            songCollection = new SongCollection();
+        }else{
+            shuffleBtn.setBackgroundResource(R.drawable.ic_baseline_shuffle_on_24);
+            Collections.shuffle(shuffleList);
+            shuffleList.toArray(songCollection.songs);
+        }
+        shuffleFlag =!shuffleFlag; //if initial repeatFlag is true then false, if false then true
     }
 }

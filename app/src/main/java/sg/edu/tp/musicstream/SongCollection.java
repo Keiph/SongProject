@@ -1,9 +1,9 @@
 package sg.edu.tp.musicstream;
 
 public class SongCollection {
-    private Song popularSongs[] = new Song[2];
+    Song popularSongs[] = new Song[2];
 
-    private Song songs[] = new Song[4];
+    Song songs[] = new Song[4];
 
     public SongCollection(){
         Song theWayYouLookTonight = new Song("S1001",
