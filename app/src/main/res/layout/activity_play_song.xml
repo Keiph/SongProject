@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imgCoverArt"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="31dp"
@@ -89,10 +89,11 @@
 
     <Button
         android:id="@+id/repeatBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/ic_baseline_repeat_off_24"
+        android:onClick="repeatSong"
         app:layout_constraintBottom_toTopOf="@+id/btnNext"
         app:layout_constraintEnd_toEndOf="@+id/btnNext" />
 
@@ -100,9 +101,27 @@
         android:id="@+id/seekBar"
         android:layout_width="350dp"
         android:layout_height="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtArtist" />
+
+    <SeekBar
+        android:id="@+id/volumeSeekBar"
+        android:layout_width="175dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlayPause"
+        app:layout_constraintEnd_toStartOf="@+id/repeatBtn"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <ImageView
+        android:id="@+id/volumeBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlayPause"
+        app:layout_constraintEnd_toStartOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:srcCompat="@drawable/ic_baseline_volume_up_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

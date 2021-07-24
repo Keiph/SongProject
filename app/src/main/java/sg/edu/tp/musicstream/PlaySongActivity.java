@@ -1,5 +1,6 @@
 package sg.edu.tp.musicstream;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,14 +24,24 @@ public class PlaySongActivity extends AppCompatActivity {
     private int currentIndex = -1;
 
     private MediaPlayer player = new MediaPlayer();
+    private AudioManager audioManager;
     private Button btnPlayPause = null;
-    private SongCollection songCollection = new SongCollection();
     SeekBar seekBar;
+    SeekBar volumeSeekBar;
     Handler handler = new Handler();
+    Button repeatBtn;
+    boolean repeatFlag = false; //not a loop when enter in app
+    private SongCollection songCollection = new SongCollection();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE); //get system audio service cast to AudioManager
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC); //all device when starting app set music all to max volume when streaming music
+        int currentVolume =audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);// Check Media/phone int in volume
+
+
         setContentView(R.layout.activity_play_song);
         btnPlayPause = findViewById(R.id.btnPlayPause);
         Bundle songData = this.getIntent().getExtras();
@@ -39,6 +50,26 @@ public class PlaySongActivity extends AppCompatActivity {
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
         seekBar = findViewById(R.id.seekBar);
+        volumeSeekBar = findViewById(R.id.volumeSeekBar);
+        volumeSeekBar.setMax(maxVolume);// set the max volume from what we declared in line 37
+        volumeSeekBar.setProgress(currentVolume);// set the current volume  from what we found in line 38
+        volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
+                //whenever i drag the seek bar listen to this line of code
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //whenever i touch the seek bar listen to this line of code
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //whenever i let go of the seek bar listen to this line of code
+            }
+        });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -47,7 +78,7 @@ public class PlaySongActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                //I can pause the music here but not good for user experience
             }
 
             @Override
@@ -58,8 +89,10 @@ public class PlaySongActivity extends AppCompatActivity {
 
             }
         });
+        repeatBtn = findViewById(R.id.repeatBtn);
 
     }
+
     Runnable p_bar = new Runnable() {
         @Override
         public void run() {
@@ -119,9 +152,13 @@ public class PlaySongActivity extends AppCompatActivity {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(getBaseContext(), "The song had ended and the onCompleteListener is activated\nThe button text is changed to 'PLAY'" , Toast.LENGTH_LONG).show();
-                btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-                //btnPlayPause.setText("PLAY");
+                if (repeatFlag){//loop on
+                    playOrPauseMusic(null);// call playOrPauseMusic method again
+                }else {
+                    Toast.makeText(getBaseContext(), "Song ended", Toast.LENGTH_LONG).show();
+                    btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+                    //btnPlayPause.setText("PLAY");
+                }
             }
         });
     }
@@ -151,5 +188,14 @@ public class PlaySongActivity extends AppCompatActivity {
             player.release();
             player = null;
         }
+    }
+
+    public void repeatSong(View view) {
+        if (repeatFlag){
+            repeatBtn.setBackgroundResource(R.drawable.ic_baseline_repeat_off_24);
+        }else{
+            repeatBtn.setBackgroundResource(R.drawable.ic_baseline_repeat_24);
+        }
+        repeatFlag =!repeatFlag; //if initial repeatFlag is true then false, if false then true
     }
 }

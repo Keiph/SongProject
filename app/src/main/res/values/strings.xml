@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Moogle</string>
+    <string name="app_name"> Moogle </string>
     <string name="this_is_for_a_song_image">Image of the song</string>
     <string name="SongTitle"> Song Title </string>
     <string name="Artist">Artist</string>

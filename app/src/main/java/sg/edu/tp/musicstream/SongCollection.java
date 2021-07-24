@@ -1,6 +1,8 @@
 package sg.edu.tp.musicstream;
 
 public class SongCollection {
+    private Song popularSongs[] = new Song[2];
+
     private Song songs[] = new Song[4];
 
     public SongCollection(){
@@ -31,12 +33,28 @@ public class SongCollection {
                 "https://p.scdn.co/mp3-preview/fbdb1dfd98d6d51d968bd42b9d667c9f3b7ffb9b?cid=2afe87a64b0042dabf51f37318616965",
                 4.33,
                 R.drawable.wonder_wall);
+        Song somethingJustLikeThat = new Song("S1005",
+                "Something Just Like That",
+                "The Chainsmoker",
+                "https://p.scdn.co/mp3-preview/ab1cd059a9ac76478e2892f390036b9568c69a4f?cid=2afe87a64b0042dabf51f37318616965",
+                4.13,
+                R.drawable.something_just_like_this);
+
+        Song closer = new Song("S1006",
+                "Closer",
+                "The Chainsmoker",
+                "https://p.scdn.co/mp3-preview/8d3df1c64907cb183bff5a127b1525b530992afb?cid=2afe87a64b0042dabf51f37318616965",
+                4.08,
+                R.drawable.closer);
+
 
 
         songs[0] = theWayYouLookTonight;
         songs[1] = billieJean;
         songs[2] = photograph;
         songs[3] = wonderwall;
+        popularSongs[0]=somethingJustLikeThat;
+        popularSongs[1]=closer;
 
     }
 
@@ -71,6 +89,7 @@ public class SongCollection {
             return currentSongIndex-1;
         }
     }
+
 }
 
 
