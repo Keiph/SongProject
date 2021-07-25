@@ -13,7 +13,8 @@
         android:theme="@style/Theme.MusicStream">
         <activity android:name=".PlaySongActivity"></activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

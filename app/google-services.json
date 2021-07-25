@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1092004647577",
+    "project_id": "musicstream-1ce5c",
+    "storage_bucket": "musicstream-1ce5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092004647577:android:5abd18a556558cc1949e08",
+        "android_client_info": {
+          "package_name": "sg.edu.tp.musicstream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092004647577-p2urrqa995dn5f81a84o1vtdfgtlnm1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0p7QkEWc1j9CyislQmL6SI1sDNGCUZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092004647577-p2urrqa995dn5f81a84o1vtdfgtlnm1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
