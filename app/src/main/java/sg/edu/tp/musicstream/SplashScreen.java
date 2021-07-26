@@ -1,17 +1,11 @@
 package sg.edu.tp.musicstream;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.StyleSpan;
-import android.view.View;
+import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
     Handler handler;
@@ -29,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

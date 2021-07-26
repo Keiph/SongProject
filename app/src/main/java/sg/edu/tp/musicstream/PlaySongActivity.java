@@ -1,8 +1,8 @@
+
 package sg.edu.tp.musicstream;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -86,14 +88,15 @@ public class PlaySongActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                //I can pause the music here but not good for user experience
+
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                if (player !=null && player.isPlaying()) {
+
                     player.seekTo(seekBar.getProgress());
-                }
+                    //why i decided remove if statement (from Mr andrew tan line of code here is because the if statement
+                // prohibits the user from using the seekbar when song is paused
 
             }
         });
@@ -187,6 +190,7 @@ public class PlaySongActivity extends AppCompatActivity {
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
     }
+
 
     @Override
     public void onBackPressed() {
