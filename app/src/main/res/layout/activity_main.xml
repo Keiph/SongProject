@@ -4,27 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/graident_background_for_homescreen">
+    android:background="@drawable/graident_background_for_homescreen"
+    android:onClick="addToPlaylist"
+    tools:context=".MainActivity">
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="5dp"
-        android:onClick="handleSelection"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundMenu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/catergoryTxt1">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/S1001"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,185 +39,145 @@
                 android:id="@+id/txtTitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="The Way You Look Tonight"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist1"
-                app:layout_constraintStart_toStartOf="@+id/S1001"
-                app:layout_constraintTop_toBottomOf="@+id/S1001" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1001"
+                app:layout_constraintTop_toTopOf="@+id/S1001" />
 
             <TextView
                 android:id="@+id/txtArtist1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Michael Buble"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1001" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle1"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle1" />
 
             <ImageButton
                 android:id="@+id/S1002"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1001"
-                app:layout_constraintTop_toTopOf="@+id/S1001"
+                app:layout_constraintStart_toStartOf="@+id/S1001"
+                app:layout_constraintTop_toBottomOf="@+id/S1001"
                 app:srcCompat="@drawable/billie_jean" />
 
             <TextView
                 android:id="@+id/txtTitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Billie Jean"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist2"
-                app:layout_constraintStart_toStartOf="@+id/S1002"
-                app:layout_constraintTop_toBottomOf="@+id/S1002" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1002"
+                app:layout_constraintTop_toTopOf="@+id/S1002" />
 
             <TextView
                 android:id="@+id/txtArtist2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Michael Jackson"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1002" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle2" />
 
             <ImageButton
                 android:id="@+id/S1003"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1002"
-                app:layout_constraintTop_toTopOf="@+id/S1002"
+                app:layout_constraintStart_toStartOf="@+id/S1002"
+                app:layout_constraintTop_toBottomOf="@+id/S1002"
                 app:srcCompat="@drawable/photograph" />
 
             <TextView
                 android:id="@+id/txtTitle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Photograph"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist3"
-                app:layout_constraintStart_toEndOf="@+id/S1002"
-                app:layout_constraintStart_toStartOf="@+id/S1003"
-                app:layout_constraintTop_toBottomOf="@+id/S1003" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1003"
+                app:layout_constraintTop_toTopOf="@+id/S1003" />
 
             <TextView
                 android:id="@+id/txtArtist3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Ed Sheeran"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1003" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle3"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle3" />
 
             <ImageButton
                 android:id="@+id/S1004"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1003"
-                app:layout_constraintTop_toTopOf="@+id/S1003"
+                app:layout_constraintStart_toStartOf="@+id/S1003"
+                app:layout_constraintTop_toBottomOf="@+id/S1003"
                 app:srcCompat="@drawable/wonder_wall" />
 
             <TextView
                 android:id="@+id/txtTitle4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Wonderwall"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist4"
-                app:layout_constraintStart_toStartOf="@+id/S1004"
-                app:layout_constraintTop_toBottomOf="@+id/S1004" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1004"
+                app:layout_constraintTop_toTopOf="@+id/S1004" />
 
             <TextView
                 android:id="@+id/txtArtist4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Oasis"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1004" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle4"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle4" />
 
-
-    <TextView
-        android:id="@+id/catergoryTxt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Reccomended"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/catergoryTxt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Popular"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/catergoryTxt1"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="5dp"
-        android:onClick="handleSelection"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/catergoryTxt2">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="296dp">
 
             <ImageButton
                 android:id="@+id/S1005"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1004"
+                app:layout_constraintTop_toBottomOf="@+id/S1004"
                 app:srcCompat="@drawable/something_just_like_this" />
 
 
@@ -221,133 +185,230 @@
                 android:id="@+id/txtTitle5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Something Just Like This"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist5"
-                app:layout_constraintStart_toStartOf="@+id/S1005"
-                app:layout_constraintTop_toBottomOf="@+id/S1005" />
-
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1005"
+                app:layout_constraintTop_toTopOf="@+id/S1005" />
 
             <TextView
                 android:id="@+id/txtArtist5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="The Chainsmokers"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle5"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle5" />
 
             <ImageButton
                 android:id="@+id/S1006"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1005"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1005"
+                app:layout_constraintTop_toBottomOf="@+id/S1005"
                 app:srcCompat="@drawable/closer" />
 
             <TextView
                 android:id="@+id/txtTitle6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Closer"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist6"
-                app:layout_constraintStart_toStartOf="@+id/S1006"
-                app:layout_constraintTop_toBottomOf="@+id/S1006" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1006"
+                app:layout_constraintTop_toTopOf="@+id/S1006" />
 
             <TextView
                 android:id="@+id/txtArtist6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="The Chainsmokers"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1006" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle6"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle6" />
 
             <ImageButton
                 android:id="@+id/S1007"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1006"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1006"
+                app:layout_constraintTop_toBottomOf="@+id/S1006"
                 app:srcCompat="@drawable/count_on_me" />
 
             <TextView
                 android:id="@+id/txtTitle7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Count On Me"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist7"
-                app:layout_constraintStart_toStartOf="@+id/S1007"
-                app:layout_constraintTop_toBottomOf="@+id/S1007" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1007"
+                app:layout_constraintTop_toTopOf="@+id/S1007" />
 
             <TextView
                 android:id="@+id/txtArtist7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Bruno Mars"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1007" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle7"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle7" />
 
             <ImageButton
                 android:id="@+id/S1008"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="handleSelection"
                 android:scaleType="centerCrop"
-                app:layout_constraintStart_toEndOf="@+id/S1007"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/S1007"
+                app:layout_constraintTop_toBottomOf="@+id/S1007"
                 app:srcCompat="@drawable/rolling_in_the_deep" />
 
             <TextView
                 android:id="@+id/txtTitle8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Rolling in the Deep"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtArtist8"
-                app:layout_constraintStart_toStartOf="@+id/S1008"
-                app:layout_constraintTop_toBottomOf="@+id/S1008" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/S1008"
+                app:layout_constraintTop_toTopOf="@+id/S1008" />
 
             <TextView
                 android:id="@+id/txtArtist8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Adele"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/S1008" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle8"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle8" />
+
+            <ImageView
+                android:id="@+id/add1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1001"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1001"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1001"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+            <ImageView
+                android:id="@+id/add2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1002"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1002"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1002"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+            <ImageView
+                android:id="@+id/add3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1003"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1003"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1003"
+                app:srcCompat="@android:drawable/ic_input_add" />
+            <ImageView
+                android:id="@+id/add4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1004"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1004"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1004"
+                app:srcCompat="@android:drawable/ic_input_add" />
+            <ImageView
+                android:id="@+id/add5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1005"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1005"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1005"
+                app:srcCompat="@android:drawable/ic_input_add" />
+            <ImageView
+                android:id="@+id/add6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1006"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1006"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1006"
+                app:srcCompat="@android:drawable/ic_input_add" />
+            <ImageView
+                android:id="@+id/add7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1007"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1007"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1007"
+                app:srcCompat="@android:drawable/ic_input_add" />
+            <ImageView
+                android:id="@+id/add8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="S1008"
+                android:onClick="addToPlaylist"
+                app:layout_constraintBottom_toBottomOf="@+id/S1008"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/S1008"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/button"
@@ -355,10 +416,54 @@
         android:layout_height="wrap_content"
         android:onClick="logout"
         android:text="Log Out"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_baseline_home_24"
+        app:layout_constraintBottom_toBottomOf="@+id/playlistBtn"
+        app:layout_constraintStart_toStartOf="@+id/backgroundMenu"
+        app:layout_constraintTop_toTopOf="@+id/playlistBtn" />
+
+    <Button
+        android:id="@+id/playlistBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/ic_baseline_library_music_24"
+        android:onClick="playlistPage"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundMenu"
+        app:layout_constraintEnd_toStartOf="@+id/profileBtn"
+        app:layout_constraintStart_toEndOf="@+id/homeBtn"
+        app:layout_constraintTop_toTopOf="@+id/backgroundMenu" />
+
+    <Button
+        android:id="@+id/profileBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/ic_baseline_person_24"
+        android:onClick="profilePage"
+        app:layout_constraintBottom_toBottomOf="@+id/playlistBtn"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundMenu"
+        app:layout_constraintTop_toTopOf="@+id/playlistBtn" />
+
+    <ImageView
+        android:id="@+id/backgroundMenu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView1" />
+        app:srcCompat="@drawable/black_home_background_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

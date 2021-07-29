@@ -100,6 +100,19 @@ public class SongCollection {
             return currentSongIndex - 1;
         }
     }
+    public Song searchById(String id){
+        Song tempSong = null;
+        for (int i = 0; i < songs.length; i++) {
+            tempSong = songs[i];
+            String tempId = tempSong.getId();
+            if (tempId.equals(id)){
+                return tempSong;
+            }
+        }
+        return tempSong;
+    } /*This set of code taken from Mr Andrew Tan to make a functionable playlist cuz public Song is
+    declared in the MainActivity and so this set of code does not affect my PlaySongActivity cuz i
+    didn't call it there*/
 
 }
 

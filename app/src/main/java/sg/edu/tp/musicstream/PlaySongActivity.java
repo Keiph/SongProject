@@ -222,4 +222,5 @@ public class PlaySongActivity extends AppCompatActivity {
         }
         shuffleFlag =!shuffleFlag; //if initial repeatFlag is true then false, if false then true
     }
+
 }

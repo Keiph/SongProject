@@ -1,21 +1,24 @@
 package sg.edu.tp.musicstream;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button logout;
 
+
     SongCollection songCollection = new SongCollection();
+    static ArrayList<Song> playlist = new ArrayList<Song>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.button);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
     }
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         finish();
     }
 
@@ -46,4 +55,17 @@ public class MainActivity extends AppCompatActivity {
         sendDataToActivity(currentArrayIndex);
     }
 
+
+    public void addToPlaylist(View view) {
+        String songID = view.getContentDescription().toString();
+        Song song = songCollection.searchById(songID);
+        playlist.add(song);
+        //Toast.makeText(this, "Song added", Toast.LENGTH_SHORT).show();
+    }
+
+    public void playlistPage(View view) {
+        Intent intent = new Intent(this, PlaylistActivity.class);
+        startActivity(intent);
+
+    }
 }
