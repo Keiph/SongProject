@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
-    Button logout;
+    Button logout,playlistPage,profilePage;
 
 
     SongCollection songCollection = new SongCollection();
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.button);
+        playlistPage = findViewById(R.id.playlistBtn);
+        profilePage = findViewById(R.id.profileBtn);
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -63,9 +65,10 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this, "Song added", Toast.LENGTH_SHORT).show();
     }
 
-    public void playlistPage(View view) {
-        Intent intent = new Intent(this, PlaylistActivity.class);
-        startActivity(intent);
 
+
+    public void playlistPage(View view) {
+        Intent intent = new Intent(this,PlaylistActivity.class);
+        startActivity(intent);
     }
 }

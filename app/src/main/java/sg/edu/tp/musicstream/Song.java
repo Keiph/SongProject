@@ -1,21 +1,23 @@
 package sg.edu.tp.musicstream;
 
 public class Song {
+    private String coverArt;
     private String id;
     private String title;
     private String artiste;
     private String fileLink;
     private double songLength;
-    private int drawable;
+    int drawable;
 
     //create a constructor for Song class
-    public Song(String id, String title, String artiste, String fileLink, double songLength, int drawable) {
+    public Song(String id, String title, String artiste, String fileLink, double songLength, int drawable, String coverArt) {
         this.id = id;
         this.title = title;
         this.artiste = artiste;
         this.fileLink = fileLink;
         this.songLength = songLength;
         this.drawable = drawable;
+        this.coverArt = coverArt;
     }
 
     public String getId() {
@@ -64,6 +66,14 @@ public class Song {
 
     public void setDrawable(int drawable) {
         this.drawable = drawable;
+    }
+
+    public String getCoverArt() {
+        return coverArt;
+    }
+
+    public void setCoverArt(String coverArt) {
+        this.coverArt = coverArt;
     }
 
 }
