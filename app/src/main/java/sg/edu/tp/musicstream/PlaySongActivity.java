@@ -95,8 +95,6 @@ public class PlaySongActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                     player.seekTo(seekBar.getProgress());
-                    //why i decided remove if statement (from Mr andrew tan line of code here is because the if statement
-                // prohibits the user from using the seekbar when song is paused
 
             }
         });
@@ -146,15 +144,16 @@ public class PlaySongActivity extends AppCompatActivity {
 
     public void playOrPauseMusic(View view) {
         if (player != null && player.isPlaying()) { //if player is playing
-            seekBar.setMax(player.getDuration());
-            handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
-            handler.postDelayed(p_bar, 1000);
             player.pause();
+            seekBar.setMax(player.getDuration());
+            handler.postDelayed(p_bar, 1000);
+            handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
             setTitle("Now Playing: " + title + " - " + artiste);
             //if song is playing, user press pause, music pause and change to play arrow xml
         } else {
             player.start();
+            seekBar.setMax(player.getDuration());
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
             //btnPlayPause.setText("PAUSE");
         }

@@ -16,8 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -349,6 +348,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/S1003"
                 app:srcCompat="@android:drawable/ic_input_add" />
+
             <ImageView
                 android:id="@+id/add4"
                 android:layout_width="50dp"
@@ -360,6 +360,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/S1004"
                 app:srcCompat="@android:drawable/ic_input_add" />
+
             <ImageView
                 android:id="@+id/add5"
                 android:layout_width="50dp"
@@ -371,6 +372,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/S1005"
                 app:srcCompat="@android:drawable/ic_input_add" />
+
             <ImageView
                 android:id="@+id/add6"
                 android:layout_width="50dp"
@@ -382,6 +384,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/S1006"
                 app:srcCompat="@android:drawable/ic_input_add" />
+
             <ImageView
                 android:id="@+id/add7"
                 android:layout_width="50dp"
@@ -393,6 +396,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/S1007"
                 app:srcCompat="@android:drawable/ic_input_add" />
+
             <ImageView
                 android:id="@+id/add8"
                 android:layout_width="50dp"

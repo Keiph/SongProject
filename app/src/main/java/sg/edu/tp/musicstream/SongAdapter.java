@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,14 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
         title.setText(song.getTitle());
         int imageId = AppUtil.getImageIdFromDrawable(context, song.getCoverArt());
         holder.image.setImageResource(imageId);
+        holder.removeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.playlist.remove(position);
+                notifyDataSetChanged();
+                Toast.makeText(context, songs.get(position)+"has been removed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
