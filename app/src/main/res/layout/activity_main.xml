@@ -12,9 +12,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/backgroundMenu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -409,65 +408,55 @@
                 app:layout_constraintTop_toTopOf="@+id/S1008"
                 app:srcCompat="@android:drawable/ic_input_add" />
 
+            <ImageView
+                android:id="@+id/backgroundMenu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/S1008"
+                app:srcCompat="@drawable/black_home_background_menu" />
+
+            <Button
+                android:id="@+id/playlistBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="92dp"
+                android:background="@drawable/ic_baseline_library_music_24"
+                android:onClick="playlistPage"
+                app:layout_constraintBottom_toBottomOf="@+id/backgroundMenu"
+                app:layout_constraintEnd_toStartOf="@+id/profileBtn"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/homeBtn"
+                app:layout_constraintTop_toTopOf="@+id/backgroundMenu"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <Button
+                android:id="@+id/homeBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:background="@drawable/ic_baseline_home_24"
+                app:layout_constraintBottom_toBottomOf="@+id/backgroundMenu"
+                app:layout_constraintStart_toStartOf="@+id/backgroundMenu"
+                app:layout_constraintTop_toTopOf="@+id/backgroundMenu" />
+
+            <Button
+                android:id="@+id/profileBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/ic_baseline_person_24"
+                android:onClick="profilePage"
+                app:layout_constraintBottom_toBottomOf="@+id/backgroundMenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/backgroundMenu" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="logout"
-        android:text="Log Out"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/backgroundMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/homeBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/ic_baseline_home_24"
-        app:layout_constraintBottom_toBottomOf="@+id/playlistBtn"
-        app:layout_constraintStart_toStartOf="@+id/backgroundMenu"
-        app:layout_constraintTop_toTopOf="@+id/playlistBtn" />
-
-    <Button
-        android:id="@+id/playlistBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginEnd="100dp"
-        android:background="@drawable/ic_baseline_library_music_24"
-        android:onClick="playlistPage"
-        app:layout_constraintBottom_toBottomOf="@+id/backgroundMenu"
-        app:layout_constraintEnd_toStartOf="@+id/profileBtn"
-        app:layout_constraintStart_toEndOf="@+id/homeBtn"
-        app:layout_constraintTop_toTopOf="@+id/backgroundMenu" />
-
-    <Button
-        android:id="@+id/profileBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/ic_baseline_person_24"
-        android:onClick="profilePage"
-        app:layout_constraintBottom_toBottomOf="@+id/playlistBtn"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundMenu"
-        app:layout_constraintTop_toTopOf="@+id/playlistBtn" />
-
-    <ImageView
-        android:id="@+id/backgroundMenu"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/black_home_background_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

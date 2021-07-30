@@ -3,6 +3,7 @@ package sg.edu.tp.musicstream;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,19 @@ public class PlaylistActivity extends AppCompatActivity {
         songAdapter = new SongAdapter(MainActivity.playlist);
         playlist.setAdapter(songAdapter);
         playlist.setLayoutManager(new LinearLayoutManager( this));
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                songAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
 
     }

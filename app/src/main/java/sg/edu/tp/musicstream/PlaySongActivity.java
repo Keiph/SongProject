@@ -127,7 +127,7 @@ public class PlaySongActivity extends AppCompatActivity {
         iCoverArt.setImageResource(drawable);
     }
 
-    public void playSong(String songUrl) {
+    private void playSong(String songUrl) {
         try {
             player.reset();
             player.setDataSource(songUrl);
@@ -136,7 +136,7 @@ public class PlaySongActivity extends AppCompatActivity {
             gracefullyStopsWhenMusicEnds();
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
             //btnPlayPause.setText("PAUSE");
-            setTitle(title);
+            setTitle("Now Playing: " + title + " - " + artiste);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -146,10 +146,9 @@ public class PlaySongActivity extends AppCompatActivity {
         if (player != null && player.isPlaying()) { //if player is playing
             player.pause();
             seekBar.setMax(player.getDuration());
-            handler.postDelayed(p_bar, 1000);
             handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
+            handler.postDelayed(p_bar, 1000);
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-            setTitle("Now Playing: " + title + " - " + artiste);
             //if song is playing, user press pause, music pause and change to play arrow xml
         } else {
             player.start();
