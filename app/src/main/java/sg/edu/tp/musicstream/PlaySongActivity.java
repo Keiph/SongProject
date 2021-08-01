@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -51,7 +52,7 @@ public class PlaySongActivity extends AppCompatActivity {
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC); //all device when starting app set music all to max volume when streaming music
         int currentVolume =audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);// Check Media/phone int in volume
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_play_song);
         btnPlayPause = findViewById(R.id.btnPlayPause);
         Bundle songData = this.getIntent().getExtras();
@@ -199,6 +200,11 @@ public class PlaySongActivity extends AppCompatActivity {
             player.release();
             player = null;
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        // for the back button in the title bar
+        onBackPressed();
+        return true;
     }
 
     public void repeatSong(View view) {

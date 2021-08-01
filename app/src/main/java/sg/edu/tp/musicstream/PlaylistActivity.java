@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PlaylistActivity extends AppCompatActivity {
+    private long backPressTime;
+    private Toast backToast;
     RecyclerView playlist;
     SongAdapter songAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Playlist");
         setContentView(R.layout.activity_playlist);
         playlist = findViewById(R.id.recycleView);
         songAdapter = new SongAdapter(MainActivity.playlist);
@@ -52,5 +55,18 @@ public class PlaylistActivity extends AppCompatActivity {
     public void homePage(View view) {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+
+        if (backPressTime + 2000 > System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressTime = System.currentTimeMillis();
     }
 }

@@ -17,6 +17,8 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private long backPressTime;
+    private Toast backToast;
     FirebaseAuth mAuth;
     Button logout,playlistPage,profilePage;
 
@@ -45,9 +47,12 @@ public class MainActivity extends AppCompatActivity {
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            Toast.makeText(this, "Unauthorized User", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
+
+
     }
 
     public void logout(View view) {
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlaySongActivity.class);
         intent.putExtra("index", index);
         startActivity(intent);
+
     }
 
     public void handleSelection(View myView) {
@@ -95,5 +101,19 @@ public class MainActivity extends AppCompatActivity {
     public void profilePage(View view) {
         Intent intent = new Intent(this,ProfileActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (backPressTime + 2000 > System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT);
+                    backToast.show();
+        }
+        backPressTime = System.currentTimeMillis();
     }
 }
