@@ -32,6 +32,8 @@ public class PlaySongActivity extends AppCompatActivity {
     private MediaPlayer player = new MediaPlayer();
     private AudioManager audioManager;
     private Button btnPlayPause = null;
+    Button fastForwardBtn;
+    Button rewindBtn;
     SeekBar seekBar;
     SeekBar volumeSeekBar;
     Handler handler = new Handler();
@@ -45,6 +47,8 @@ public class PlaySongActivity extends AppCompatActivity {
     List<Song> shuffleList = Arrays.asList(songCollection.songs);
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,9 @@ public class PlaySongActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_play_song);
         btnPlayPause = findViewById(R.id.btnPlayPause);
+        fastForwardBtn = findViewById(R.id.fastForwardBtn);
+        rewindBtn = findViewById(R.id.rewindBtn);
+
         Bundle songData = this.getIntent().getExtras();
         currentIndex = songData.getInt("index");
         Log.d("temasek","Retrieved Position is "+currentIndex);
@@ -62,6 +69,28 @@ public class PlaySongActivity extends AppCompatActivity {
         playSong(fileLink);
         seekBar = findViewById(R.id.seekBar);
         volumeSeekBar = findViewById(R.id.volumeSeekBar);
+        fastForwardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = player.getCurrentPosition();
+                int musicDuration = player.getDuration();
+                if (player.isPlaying() && musicDuration !=currentPosition){
+                    currentPosition = currentPosition + 5000;
+                    player.seekTo(currentPosition);
+                }
+            }
+        });
+        rewindBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = player.getCurrentPosition();
+                int musicDuration = player.getDuration();
+                if (player.isPlaying() && currentPosition > 5000){
+                    currentPosition = currentPosition - 5000;
+                    player.seekTo(currentPosition);
+                }
+            }
+        });
         volumeSeekBar.setMax(maxVolume);// set the max volume from what we declared in line 37
         volumeSeekBar.setProgress(currentVolume);// set the current volume  from what we found in line 38
         volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -150,14 +179,19 @@ public class PlaySongActivity extends AppCompatActivity {
             handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
             handler.postDelayed(p_bar, 1000);
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-            //if song is playing, user press pause, music pause and change to play arrow xml
-        } else {
+        }
+        else {
             player.start();
             seekBar.setMax(player.getDuration());
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
-            //btnPlayPause.setText("PAUSE");
+
+
+
         }
     }
+
+            //btnPlayPause.setText("PAUSE");
+
 
     private void gracefullyStopsWhenMusicEnds() {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -172,6 +206,8 @@ public class PlaySongActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     public void playNext(View view) {
@@ -180,6 +216,7 @@ public class PlaySongActivity extends AppCompatActivity {
         Log.d("temasek", "After playNext, the index is now :" + currentIndex);
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
+
     }
 
     public void playPrevious(View view) {
@@ -188,6 +225,7 @@ public class PlaySongActivity extends AppCompatActivity {
         Log.d("temasek", "After playPrevious, the index is now :" + currentIndex);
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
+
     }
 
 
@@ -201,8 +239,8 @@ public class PlaySongActivity extends AppCompatActivity {
             player = null;
         }
     }
+
     public boolean onOptionsItemSelected(MenuItem item){
-        // for the back button in the title bar
         onBackPressed();
         return true;
     }
@@ -226,5 +264,6 @@ public class PlaySongActivity extends AppCompatActivity {
         }
         shuffleFlag =!shuffleFlag; //if initial repeatFlag is true then false, if false then true
     }
+
 
 }

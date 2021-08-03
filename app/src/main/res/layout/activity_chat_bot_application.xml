@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/graident_background_for_homescreen">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".SimpleChatBot"
+        android:id="@+id/scroll">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <View
+                android:id="@+id/botSpeaking"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_rectangle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/botGuideToFAQ"
+                android:layout_width="230dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Press the number to look for an answer                                                   1. How do I add songs to playlist?                                              2.How do I play the songs?                                            3.How do I restore my deleted playlist?                                                                                            4.How do I reset my password?                                              "
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/botSpeaking"
+                app:layout_constraintTop_toTopOf="@+id/botSpeaking" />
+
+            <Button
+                android:id="@+id/partOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Press 1"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botSpeaking" />
+
+            <Button
+                android:id="@+id/partTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Press 2"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/partOne"
+                app:layout_constraintTop_toBottomOf="@+id/botSpeaking" />
+
+            <Button
+                android:id="@+id/partThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Press 3"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/partTwo"
+                app:layout_constraintTop_toBottomOf="@+id/botSpeaking" />
+
+            <Button
+                android:id="@+id/partFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Press 4"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/partOne" />
+
+            <Button
+                android:id="@+id/exitBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Exit"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/botAnswering" />
+
+            <View
+                android:id="@+id/botAnswering"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_rectangle"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/partFour" />
+
+            <TextView
+                android:id="@+id/botReplytoFAQ"
+                android:layout_width="230dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Bot Has Answered"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@+id/botAnswering"
+                app:layout_constraintTop_toTopOf="@+id/botAnswering" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

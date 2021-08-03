@@ -12,7 +12,7 @@ public class MyView extends RecyclerView.ViewHolder {
 
     public TextView titleTxt,titleArtist;
     public ImageView image;
-    public Button removeBtn;
+    public Button removeBtn,playPlaylist;
 
 
     public MyView(@NonNull View itemView) {

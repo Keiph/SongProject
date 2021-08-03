@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="@+id/playlistBtn" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -72,5 +72,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/helpCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:onClick="helpCenter"
+        android:text="Help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <Button
+        android:id="@+id/lyricsfinder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="lyricsPage"
+        android:text="Search for Lyrics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpCenter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

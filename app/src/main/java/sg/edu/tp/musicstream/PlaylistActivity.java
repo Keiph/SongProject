@@ -3,6 +3,7 @@ package sg.edu.tp.musicstream;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -12,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PlaylistActivity extends AppCompatActivity {
     private long backPressTime;
-    private Toast backToast;
     RecyclerView playlist;
     SongAdapter songAdapter;
+    SongCollection songCollection = new SongCollection();
+    Button playPlaylist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +62,16 @@ public class PlaylistActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if (backPressTime + 2000 > System.currentTimeMillis()){
-            backToast.cancel();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             super.onBackPressed();
             return;
         }else {
-            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT);
-            backToast.show();
+            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT).show();
         }
         backPressTime = System.currentTimeMillis();
+
     }
 }

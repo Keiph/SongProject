@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private long backPressTime;
-    private Toast backToast;
     FirebaseAuth mAuth;
     Button logout,playlistPage,profilePage;
 
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        logout = findViewById(R.id.button);
+        logout = findViewById(R.id.logout);
         playlistPage = findViewById(R.id.playlistBtn);
         profilePage = findViewById(R.id.profileBtn);
         sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
@@ -53,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    }
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-        finish();
     }
 
 
@@ -107,12 +100,14 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if (backPressTime + 2000 > System.currentTimeMillis()){
-            backToast.cancel();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             super.onBackPressed();
             return;
         }else {
-            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT);
-                    backToast.show();
+            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT).show();
         }
         backPressTime = System.currentTimeMillis();
     }

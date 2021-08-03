@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,6 +51,7 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> implements Filtera
             @Override
             public void onClick(View v) {
                 MainActivity.playlist.remove(position);
+                Toast.makeText(context, "Song removed", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }
         });

@@ -69,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(inputConfirmPassword)){
                     confirmPassword.setError("Please Confirm Password");
+                    return;
                 }
 
                 if (inputPassword.length() < 6){

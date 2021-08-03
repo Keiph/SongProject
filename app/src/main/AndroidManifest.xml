@@ -3,6 +3,8 @@
     package="sg.edu.tp.musicstream">
 
     <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    
 
     <application
         android:allowBackup="true"
@@ -11,8 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicStream">
+        <activity android:name=".FindLyricsActivity"/>
         <activity android:name=".PlaySongActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".SimpleChatBot"
+            android:parentActivityName=".ProfileActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />

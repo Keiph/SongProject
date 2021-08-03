@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/graident_background_for_homescreen"
     tools:context=".PlaySongActivity">
 
     <ImageView
@@ -32,6 +33,7 @@
         android:scrollHorizontally="true"
         android:singleLine="true"
         android:text="@string/SongTitle"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +50,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="189dp"
         android:text="@string/Artist"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +139,27 @@
         app:layout_constraintBottom_toTopOf="@+id/btnPrevious"
         app:layout_constraintStart_toStartOf="@+id/btnPrevious"
         app:layout_constraintTop_toTopOf="@+id/repeatBtn" />
+
+    <Button
+        android:id="@+id/fastForwardBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_baseline_fast_forward_24"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlayPause"
+        app:layout_constraintEnd_toStartOf="@+id/btnNext"
+        app:layout_constraintStart_toEndOf="@+id/btnPlayPause"
+        app:layout_constraintTop_toTopOf="@+id/btnPlayPause" />
+
+    <Button
+        android:id="@+id/rewindBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_baseline_fast_rewind_24"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlayPause"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlayPause"
+        app:layout_constraintStart_toEndOf="@+id/btnPrevious"
+        app:layout_constraintTop_toTopOf="@+id/btnPlayPause" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
