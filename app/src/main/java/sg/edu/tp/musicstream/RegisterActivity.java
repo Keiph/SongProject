@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText userName,email,password,confirmPassword;
+    EditText userName, email, password, confirmPassword;
     TextView toLoginPage;
     Button registerBtn;
     ProgressBar progressBar;
@@ -27,21 +27,21 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setting resources
         setContentView(R.layout.activity_register_page);
         userName = findViewById(R.id.userName);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        confirmPassword=findViewById(R.id.confirmPassword);
-        toLoginPage=findViewById(R.id.toLoginPage);
-        registerBtn=findViewById(R.id.registerBtn);
+        confirmPassword = findViewById(R.id.confirmPassword);
+        toLoginPage = findViewById(R.id.toLoginPage);
+        registerBtn = findViewById(R.id.registerBtn);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 
@@ -53,30 +53,30 @@ public class RegisterActivity extends AppCompatActivity {
                 String inputPassword = password.getText().toString().trim();
                 String inputConfirmPassword = confirmPassword.getText().toString().trim();
 
-                if (TextUtils.isEmpty(inputUsername)){
+                if (TextUtils.isEmpty(inputUsername)) {
                     userName.setError("Please make an Username");
                     return;
                 }
 
-                if (TextUtils.isEmpty(inputEmail)){
+                if (TextUtils.isEmpty(inputEmail)) {
                     email.setError("Email is Required");
                     return;
                 }
 
-                if (TextUtils.isEmpty(inputPassword)){
+                if (TextUtils.isEmpty(inputPassword)) {
                     password.setError("Password is Required");
                     return;
                 }
-                if (TextUtils.isEmpty(inputConfirmPassword)){
+                if (TextUtils.isEmpty(inputConfirmPassword)) {
                     confirmPassword.setError("Please Confirm Password");
                     return;
                 }
 
-                if (inputPassword.length() < 6){
+                if (inputPassword.length() < 6) {
                     password.setError("Password must have more than 6 characters long");
                     return;
                 }
-                if (!inputConfirmPassword.equals(inputPassword)){ //password is a string data type != does not work for string. Take Note
+                if (!inputConfirmPassword.equals(inputPassword)) { //password is a string data type != does not work for string. Take Note
                     confirmPassword.setError("Make sure your password is match");
                     return;
                 }
@@ -86,15 +86,15 @@ public class RegisterActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //user registering into firebase
-                mAuth.createUserWithEmailAndPassword(inputEmail,inputPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-                        }else{
-                            Toast.makeText(RegisterActivity.this, "Error!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
         toLoginPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
     }

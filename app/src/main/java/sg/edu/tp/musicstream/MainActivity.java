@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private long backPressTime;
     FirebaseAuth mAuth;
-    Button logout,playlistPage,profilePage;
+    Button logout, playlistPage, profilePage;
 
 
     SongCollection songCollection = new SongCollection();
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("playList", MODE_PRIVATE);
         String albums = sharedPreferences.getString("list", "");
 
-        if (!albums.equals(""))
-        {
-            TypeToken<ArrayList<Song>> token = new TypeToken<ArrayList<Song>>(){};
+        if (!albums.equals("")) {
+            TypeToken<ArrayList<Song>> token = new TypeToken<ArrayList<Song>>() {
+            };
             Gson gson = new Gson();
             playlist = gson.fromJson(albums, token.getType());
         }
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void sendDataToActivity(int index){
+    public void sendDataToActivity(int index) {
         Intent intent = new Intent(this, PlaySongActivity.class);
         intent.putExtra("index", index);
         startActivity(intent);
@@ -78,36 +78,35 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = gson.toJson(playlist);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("list",json);
+        editor.putString("list", json);
         editor.apply();
-        Log.d("gson",json);
+        Log.d("gson", json);
         Toast.makeText(this, "Song added", Toast.LENGTH_SHORT).show();
     }
 
 
-
     public void playlistPage(View view) {
-        Intent intent = new Intent(this,PlaylistActivity.class);
+        Intent intent = new Intent(this, PlaylistActivity.class);
         startActivity(intent);
     }
 
     public void profilePage(View view) {
-        Intent intent = new Intent(this,ProfileActivity.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
 
-        if (backPressTime + 2000 > System.currentTimeMillis()){
+        if (backPressTime + 2000 > System.currentTimeMillis()) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             super.onBackPressed();
             return;
-        }else {
-            Toast.makeText(getBaseContext(),"Press back again to exit", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
         }
         backPressTime = System.currentTimeMillis();
     }

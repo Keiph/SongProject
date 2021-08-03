@@ -13,9 +13,9 @@ import java.util.Objects;
 
 public class SimpleChatBot extends AppCompatActivity {
     ScrollView scrollView;
-    Button partOne,partTwo,partThree,partFour,exitBtn;
-    View botSpeaking,botAnswering;
-    TextView botGuideToFAQ,botReplyToFAQ;
+    Button partOne, partTwo, partThree, partFour, exitBtn;
+    View botSpeaking, botAnswering;
+    TextView botGuideToFAQ, botReplyToFAQ;
     //Credit to myself
 
 
@@ -30,8 +30,8 @@ public class SimpleChatBot extends AppCompatActivity {
         partTwo = findViewById(R.id.partTwo);
         partThree = findViewById(R.id.partThree);
         partFour = findViewById(R.id.partFour);
-        botSpeaking =findViewById(R.id.botSpeaking);
-        botAnswering =findViewById(R.id.botAnswering);
+        botSpeaking = findViewById(R.id.botSpeaking);
+        botAnswering = findViewById(R.id.botAnswering);
         botGuideToFAQ = findViewById(R.id.botGuideToFAQ);
         botReplyToFAQ = findViewById(R.id.botReplytoFAQ);
         exitBtn = findViewById(R.id.exitBtn);

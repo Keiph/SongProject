@@ -24,9 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText email,password;
+    EditText email, password;
     Button loginBtn;
-    TextView toRegisterPage,forgotPassword;
+    TextView toRegisterPage, forgotPassword;
     ProgressBar progressBar;
     FirebaseAuth mAuth;
 
@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
 
-        if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 
@@ -54,16 +54,16 @@ public class LoginActivity extends AppCompatActivity {
                 String inputEmail = email.getText().toString().trim();
                 String inputPassword = password.getText().toString().trim();
 
-                if (TextUtils.isEmpty(inputEmail)){
+                if (TextUtils.isEmpty(inputEmail)) {
                     email.setError("Email is Required");
                     return;
                 }
 
-                if (TextUtils.isEmpty(inputPassword)){
+                if (TextUtils.isEmpty(inputPassword)) {
                     password.setError("Password is Required");
                     return;
                 }
-                if (inputPassword.length() < 6){
+                if (inputPassword.length() < 6) {
                     password.setError("Password must have more than 6 characters long");
                     return;
                 }
@@ -71,14 +71,14 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate the user
-                mAuth.signInWithEmailAndPassword(inputEmail,inputPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(inputEmail, inputPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }else{
-                            Toast.makeText(LoginActivity.this, "Error! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Error! Reset Link Is Not Sent"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Error! Reset Link Is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
 

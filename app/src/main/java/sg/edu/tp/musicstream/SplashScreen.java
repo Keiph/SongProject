@@ -1,4 +1,5 @@
 package sg.edu.tp.musicstream;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,14 +12,14 @@ public class SplashScreen extends AppCompatActivity {
     Handler handler;
 
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide(); //This line of code hide the action bar
         setContentView(R.layout.activity_spalsh_screen);
 
-        handler=new Handler();
+        handler = new Handler();
         handler.postDelayed(new Runnable() {
 
             @Override
@@ -27,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },2000);
+        }, 2000);
 
     }
 }

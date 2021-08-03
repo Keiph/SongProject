@@ -26,13 +26,15 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> implements Filtera
     List<Song> songs;
     List<Song> songsFiltered;
     Context context;
+
     @NonNull
     @Override
     public MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View songView = inflater.inflate(R.layout.item_song,parent,false);
-        MyView viewHolder = new MyView(songView);;
+        View songView = inflater.inflate(R.layout.item_song, parent, false);
+        MyView viewHolder = new MyView(songView);
+        ;
         return viewHolder;
 
     }
@@ -69,12 +71,12 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> implements Filtera
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 String charString = constraint.toString();
-                if (charString.isEmpty()){
+                if (charString.isEmpty()) {
                     songsFiltered = songs;
-                }else{
+                } else {
                     List<Song> filteredList = new ArrayList<Song>();
-                    for (int i = 0; i < songs.size() ; i++) {
-                        if (songs.get(i).getTitle().toLowerCase().contains(charString.toLowerCase())){
+                    for (int i = 0; i < songs.size(); i++) {
+                        if (songs.get(i).getTitle().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(songs.get(i));
                         }
                     }

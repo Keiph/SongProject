@@ -17,61 +17,49 @@ import sg.edu.tp.musicstream.Song;*/
  * Created by fjor on 14/2/17.
  */
 
-public final class AppUtil
-{
-    public static void popMessage(Context context, String message)
-    {
+public final class AppUtil {
+    public static void popMessage(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static String getResourceId(Context context, View view)
-    {
+    public static String getResourceId(Context context, View view) {
         String id = context.getResources().getResourceEntryName(view.getId());
 
         return id;
     }
 
-    public static int getImageIdFromDrawable(Context context, String imageName)
-    {
-        int imageID = context.getResources().getIdentifier(imageName,"drawable", context.getPackageName());
+    public static int getImageIdFromDrawable(Context context, String imageName) {
+        int imageID = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
 
         return imageID;
     }
 
-    public static Bitmap getBitmapFromAsset(Context context, String image)
-    {
+    public static Bitmap getBitmapFromAsset(Context context, String image) {
         AssetManager assetManager = context.getAssets();
         InputStream stream = null;
 
-        try
-        {
+        try {
             stream = assetManager.open(image);
 
             return BitmapFactory.decodeStream(stream);
 
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    private static String loadJsonFromAsset(String filename, Context context)
-    {
+    private static String loadJsonFromAsset(String filename, Context context) {
         String json = null;
 
-        try
-        {
+        try {
             InputStream is = context.getAssets().open(filename);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
             return null;
         }

@@ -47,14 +47,12 @@ public class PlaySongActivity extends AppCompatActivity {
     List<Song> shuffleList = Arrays.asList(songCollection.songs);
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE); //get system audio service cast to AudioManager
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC); //all device when starting app set music all to max volume when streaming music
-        int currentVolume =audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);// Check Media/phone int in volume
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);// Check Media/phone int in volume
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_play_song);
@@ -64,7 +62,7 @@ public class PlaySongActivity extends AppCompatActivity {
 
         Bundle songData = this.getIntent().getExtras();
         currentIndex = songData.getInt("index");
-        Log.d("temasek","Retrieved Position is "+currentIndex);
+        Log.d("temasek", "Retrieved Position is " + currentIndex);
         displaySongBasedOnIndex(currentIndex);
         playSong(fileLink);
         seekBar = findViewById(R.id.seekBar);
@@ -74,7 +72,7 @@ public class PlaySongActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int currentPosition = player.getCurrentPosition();
                 int musicDuration = player.getDuration();
-                if (player.isPlaying() && musicDuration !=currentPosition){
+                if (player.isPlaying() && musicDuration != currentPosition) {
                     currentPosition = currentPosition + 5000;
                     player.seekTo(currentPosition);
                 }
@@ -85,7 +83,7 @@ public class PlaySongActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int currentPosition = player.getCurrentPosition();
                 int musicDuration = player.getDuration();
-                if (player.isPlaying() && currentPosition > 5000){
+                if (player.isPlaying() && currentPosition > 5000) {
                     currentPosition = currentPosition - 5000;
                     player.seekTo(currentPosition);
                 }
@@ -96,7 +94,7 @@ public class PlaySongActivity extends AppCompatActivity {
         volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                 //whenever i drag the seek bar listen to this line of code
             }
 
@@ -124,7 +122,7 @@ public class PlaySongActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-                    player.seekTo(seekBar.getProgress());
+                player.seekTo(seekBar.getProgress());
 
             }
         });
@@ -136,7 +134,7 @@ public class PlaySongActivity extends AppCompatActivity {
     Runnable p_bar = new Runnable() {
         @Override
         public void run() {
-            if (player !=null && player.isPlaying()) {
+            if (player != null && player.isPlaying()) {
                 seekBar.setProgress(player.getCurrentPosition());
             }
             handler.postDelayed(this, 1000);
@@ -165,7 +163,6 @@ public class PlaySongActivity extends AppCompatActivity {
             player.start();
             gracefullyStopsWhenMusicEnds();
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
-            //btnPlayPause.setText("PAUSE");
             setTitle("Now Playing: " + title + " - " + artiste);
         } catch (IOException e) {
             e.printStackTrace();
@@ -179,34 +176,27 @@ public class PlaySongActivity extends AppCompatActivity {
             handler.removeCallbacks(p_bar); // This line remove all existing calling of the runnable so that only 1 runnable is called per second
             handler.postDelayed(p_bar, 1000);
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-        }
-        else {
+        } else {
             player.start();
             seekBar.setMax(player.getDuration());
             btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
 
 
-
         }
     }
-
-            //btnPlayPause.setText("PAUSE");
-
 
     private void gracefullyStopsWhenMusicEnds() {
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                if (repeatFlag){//loop on
+                if (repeatFlag) {//loop on
                     playOrPauseMusic(null);// call playOrPauseMusic method again
-                }else {
+                } else {
                     Toast.makeText(getBaseContext(), "Song ended", Toast.LENGTH_LONG).show();
                     btnPlayPause.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-                    //btnPlayPause.setText("PLAY");
                 }
             }
         });
-
 
     }
 
@@ -240,29 +230,30 @@ public class PlaySongActivity extends AppCompatActivity {
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return true;
     }
 
     public void repeatSong(View view) {
-        if (repeatFlag){
+        if (repeatFlag) {
             repeatBtn.setBackgroundResource(R.drawable.ic_baseline_repeat_off_24);
-        }else{
+        } else {
             repeatBtn.setBackgroundResource(R.drawable.ic_baseline_repeat_24);
         }
-        repeatFlag =!repeatFlag; //if initial repeatFlag is true then false, if false then true
+        repeatFlag = !repeatFlag; //if initial repeatFlag is true then false, if false then true
     }
+
     public void shuffleSong(View view) {
-        if (shuffleFlag){
+        if (shuffleFlag) {
             shuffleBtn.setBackgroundResource(R.drawable.ic_baseline_shuffle_off_24);
             songCollection = new SongCollection();
-        }else{
+        } else {
             shuffleBtn.setBackgroundResource(R.drawable.ic_baseline_shuffle_on_24);
             Collections.shuffle(shuffleList);
             shuffleList.toArray(songCollection.songs);
         }
-        shuffleFlag =!shuffleFlag; //if initial repeatFlag is true then false, if false then true
+        shuffleFlag = !shuffleFlag; //if initial repeatFlag is true then false, if false then true
     }
 
 
